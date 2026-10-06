@@ -37,6 +37,10 @@ let posreyx = 673;
 let posreyy = 200;
 let posmagox = 330;
 let posmagoy = 160;
+let posdefx = 517;
+let posdefy = 240;
+let posatkx = 90;
+let posatky = 80;
 
 
 function preload() {
@@ -49,10 +53,16 @@ function preload() {
   imagen7 = loadImage("data/imagen8.png");
   imagen8 = loadImage("data/imagen9.png");
   imagen9 = loadImage("data/imagen10.png");
+  imagen10 = loadImage("data/imagen11.png");
+  imagen11 = loadImage("data/imagen12.png");
+
   imagen01 = loadImage("data/imagenalt1-1.jpg");
   imagen02 = loadImage("data/imagenalt2-1.png");
   imagen03 = loadImage("data/imagenalt2-2.png");
   imagen04 = loadImage("data/imagenalt2-3.jpg");
+  imagen05 = loadImage("data/imagenalt3-1.jpg");
+  defender = loadImage("data/defender.png");
+  atacar = loadImage("data/atacar.png");
   mago1 = loadImage("data/mago1.png");
   tablilla = loadImage("data/tablilla.png");
   entrada = loadImage("data/entrada.png");
@@ -99,20 +109,29 @@ function draw() {
     pantalla5();
   }
 
-if (pantalla == 6) {
+  if (pantalla == 6) {
     pantalla6();
   }
 
-if (pantalla == 7) {
+  if (pantalla == 7) {
     pantalla7();
   }
-  
+
   if (pantalla == 8) {
     pantalla8();
   }
 
 
-//finales alternativos
+  if (pantalla == 9) {
+    pantalla9();
+  }
+
+  if (pantalla == 10) {
+    pantalla10();
+  }
+
+
+  //finales alternativos
   if (pantalla == 111) {
     pantalla111();
   }
@@ -124,6 +143,10 @@ if (pantalla == 7) {
   }
   if (pantalla == 231) {
     pantalla231();
+  }
+
+  if (pantalla == 311) {
+    pantalla311();
   }
 
 
@@ -144,18 +167,20 @@ function mousePressed() {
     pantalla = 4;
   } else if (pantalla == 4 && (mouseX > posprinx && mouseX < posprinx + 50 && mouseY > pospriny && mouseY < pospriny + 50)) {
     pantalla = 5;
-    
-  }  else if (pantalla == 5 && (mouseX > posreyx && mouseX < posreyx + 50 && mouseY > posreyy && mouseY < posreyy + 50)) {
+  } else if (pantalla == 5 && (mouseX > posreyx && mouseX < posreyx + 50 && mouseY > posreyy && mouseY < posreyy + 50)) {
     pantalla = 6;
-    
-    }  else if (pantalla == 6 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
+  } else if (pantalla == 6 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
     pantalla = 7;
-    
-     }  else if (pantalla == 7 && (mouseX > posmagox && mouseX < posmagox + 40 && mouseY > posmagoy && mouseY < posmagoy + 20)) {
+  } else if (pantalla == 7 && (mouseX > posmagox && mouseX < posmagox + 40 && mouseY > posmagoy && mouseY < posmagoy + 20)) {
     pantalla = 8;
+  } else if (pantalla == 8 && (mouseX > 735 && mouseX < 780  && mouseY > 130 && mouseY < 200)) {
+    pantalla = 9;
+  } else if (pantalla == 9 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
+    pantalla = 10;
     
     
     
+    //pantallas alternativas
   } else if (pantalla == 2 && (mouseX > posentrx && mouseX < posentrx + 50 && mouseY > posentry && mouseY < posentry + 50)) {
     pantalla = 211;
   } else if (pantalla == 211 && (dist(mouseX, mouseY, 775, 160) < 25/2)) {
@@ -164,5 +189,7 @@ function mousePressed() {
     pantalla = 231;
   } else if (pantalla == 1 && (mouseX > pospuentex && mouseX < pospuentex + 50 && mouseY > pospuentey && mouseY < pospuentey + 25)) {
     pantalla = 111;
+  } else if (pantalla == 9 && (mouseX > posdefx && mouseX < posdefx + 180 && mouseY > posdefy && mouseY < posdefy + 150)) {
+    pantalla = 311;
   }
 }

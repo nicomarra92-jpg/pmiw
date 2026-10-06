@@ -164,13 +164,74 @@ function pantalla8() {
 
   tint(255);
   image(imagen9, 0, 0, 800, 350);
+  text("Has matado al Señor Dragon! Dirigete hacia la proxima sala para terminar con todo este reino", 50, 380, 750, 70)
+
+if (mouseX > 735 && mouseX < 780  && mouseY > 130 && mouseY < 200) {
+
+    noStroke();
+    fill(255, 255, 255, 180);
+    rect(740, 135, 40, 80, 5);
+  } else {
+  }
+
+
+
+}
+function pantalla9() {
+
+
+  tint(255);
+  image(imagen10, 0, 0, 800, 350);
   text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+
+
+
+
+  push();
+  if (mouseX > posdefx && mouseX < posdefx + 180 && mouseY > posdefy && mouseY < posdefy + 150) {
+
+    tint(100)
+  } else {
+    tint(255)
+  }
+
+  image(defender, posdefx, posdefy);
+  text("leer", mouseX, mouseY);
+
+  pop();
+
+
+  //boton entrada cueva
+  push();
+  if (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280) {
+
+  tint(100)
+  } else {
+    tint(255)
+  }
+
+  image(atacar, posatkx, posatky);
+  text("seguir camino", mouseX, mouseY);
+
+  pop();
 
 
 }
 
 
-//pantallas finales alternativos
+function pantalla10(){
+  
+  tint(255);
+  image(imagen11, 0, 0, 800, 350);
+  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+
+
+
+}
+//////////////////////////////////////////////////////////
+//pantallas finales alternativos/////////////////////////////
+/////////////////////////////////////////////////////////
+
 
 function pantalla111() {
   tint(255)
@@ -206,4 +267,11 @@ function pantalla221() {
 function pantalla231() {
   image(imagen04, 0, 0, 800, 350);
   text("Vuelves al castillo con una vergüenza inigualable, decides no contarle a nadie de tu intrépida y corta aventura y decides pasar el resto de tus dias como un mendigo", 50, 380, 750, 70)
+}
+
+
+function pantalla311(){
+image(imagen05,0,0,800,350)
+
+
 }
