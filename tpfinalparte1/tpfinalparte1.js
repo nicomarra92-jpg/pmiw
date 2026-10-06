@@ -1,5 +1,3 @@
-
-
 let imagen1;
 let imagen2;
 let imagen3;
