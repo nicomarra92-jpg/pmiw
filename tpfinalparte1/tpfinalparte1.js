@@ -18,7 +18,7 @@ let mesa;
 let miTipografia;
 let pospuertax = 338;
 let pospuertay = 227;
-let pantalla = 0;
+let pantalla = pantallacreditos;
 let posguardiax = 372;
 let posguardiay = 141;
 let pospuentex = 592;
@@ -39,6 +39,50 @@ let posdefx = 517;
 let posdefy = 240;
 let posatkx = 90;
 let posatky = 80;
+
+
+
+
+
+
+
+
+
+let titulo = [];
+const aniTitulo = [2];
+let tituloEstacinario;
+
+let destello = [];
+
+
+
+let tituloPosY = 500;
+
+
+const aniDestello = 4;
+const veloDestello = 9;
+let posX = 900;
+let posY = 900;
+
+let textoInicioX = 900;
+let textoInicioY = 900;
+
+let botonTextoX = 900;
+let botonTextoY = 900;
+
+let creditoTextX = 900;
+let creditoTextY = 900;
+
+let CancionMenu;
+
+
+let contadorActivo = false;
+let contador = 0;
+
+
+
+
+
 
 
 function preload() {
@@ -71,7 +115,26 @@ function preload() {
   guardia1 = loadImage("data/guardia1.png");
   puente= loadImage("data/puente.png");
   miTipografia = loadFont("data/VCR_OSD_MONO_1.001.ttf");
+
+
+
+  CancionMenu = loadSound("Sonido/CancionTitulo.mp3");
+
+  // 'i' es el valor que mientras aumenta, en el areglo de aniDestello va a circular las animaciones
+  //sumando hasta llegar al valor definido en aniDestello
+  for (let i = 0; i < aniDestello; i++) {
+
+    destello.push(loadImage('Sprites/Destello/destello_' + i + '.png'));
+  }
+
+
+  tituloEstacinario = loadImage('Sprites/Titulo/Titulo_0.png');
 }
+
+
+
+
+
 
 function setup() {
   createCanvas(800, 450);
@@ -84,6 +147,12 @@ function draw() {
   textSize(18);
   fill(255);
   noStroke();
+
+
+  if (pantalla == pantallacreditos) {
+    pantallacreditos();
+  }
+
 
   if (pantalla == 0) {
     pantalla0();
@@ -155,6 +224,30 @@ function draw() {
 
 function mousePressed() {
 
+  if (getAudioContext().state !== 'running') {
+    userStartAudio();
+  }
+
+
+  if (pantalla == pantallacreditos) {
+    if (contador >= 120) {
+      if (mouseX > 200 && mouseX <  600 && mouseY > 100 && mouseY < 350) {
+
+        pantalla = 0
+      }
+    } else if   (!contadorActivo) {
+
+      reproducirMusicaMenu();
+      contadorActivo = true;
+      contador = 0;
+      textoInicioX = 900;
+      textoInicioY = 900;
+    }
+  }
+
+
+
+
   if (pantalla == 0 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
     pantalla = 1;
   } else if (pantalla == 1 && (mouseX > posguardiax && mouseX < posguardiax + 85 && mouseY > posguardiay && mouseY < posguardiay + 40)) {
@@ -175,9 +268,9 @@ function mousePressed() {
     pantalla = 9;
   } else if (pantalla == 9 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
     pantalla = 10;
-    
-    
-    
+
+
+
     //pantallas alternativas
   } else if (pantalla == 2 && (mouseX > posentrx && mouseX < posentrx + 50 && mouseY > posentry && mouseY < posentry + 50)) {
     pantalla = 211;

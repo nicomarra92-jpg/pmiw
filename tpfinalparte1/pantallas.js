@@ -166,16 +166,13 @@ function pantalla8() {
   image(imagen9, 0, 0, 800, 350);
   text("Has matado al Señor Dragon! Dirigete hacia la proxima sala para terminar con todo este reino", 50, 380, 750, 70)
 
-if (mouseX > 735 && mouseX < 780  && mouseY > 130 && mouseY < 200) {
+    if (mouseX > 735 && mouseX < 780  && mouseY > 130 && mouseY < 200) {
 
     noStroke();
     fill(255, 255, 255, 180);
     rect(740, 135, 40, 80, 5);
   } else {
   }
-
-
-
 }
 function pantalla9() {
 
@@ -187,7 +184,7 @@ function pantalla9() {
 
 
 
-  push();
+    push();
   if (mouseX > posdefx && mouseX < posdefx + 180 && mouseY > posdefy && mouseY < posdefy + 150) {
 
     tint(100)
@@ -205,7 +202,7 @@ function pantalla9() {
   push();
   if (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280) {
 
-  tint(100)
+    tint(100)
   } else {
     tint(255)
   }
@@ -214,19 +211,14 @@ function pantalla9() {
   text("seguir camino", mouseX, mouseY);
 
   pop();
-
-
 }
 
 
-function pantalla10(){
-  
+function pantalla10() {
+
   tint(255);
   image(imagen11, 0, 0, 800, 350);
   text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
-
-
-
 }
 //////////////////////////////////////////////////////////
 //pantallas finales alternativos/////////////////////////////
@@ -270,8 +262,6 @@ function pantalla231() {
 }
 
 
-function pantalla311(){
-image(imagen05,0,0,800,350)
-
-
+function pantalla311() {
+  image(imagen05, 0, 0, 800, 350)
 }
