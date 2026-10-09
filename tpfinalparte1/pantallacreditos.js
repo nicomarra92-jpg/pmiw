@@ -1,22 +1,17 @@
-
-
-
-
-
-
-
-
-
-
 // 1. FUNCIÓN PRINCIPAL DE LA PANTALLA DE CRÉDITOS
 function pantallacreditos() {
   push()
-    imageMode(CENTER);
+  imageMode(CENTER);
   background(0, 100, 100);
 
-  // Dibujamos el título y aplicamos su movimiento
-  image(tituloEstacinario, 400, tituloPosY, 500, 150);
 
+  // esta primera imagen (tituloEStacionario) es el titulo del juego sin el dragon
+  image(tituloEstacinario, 400, tituloPosY, 500, 150);
+  
+  // esta, es el titulo con el dargon saliendo, replazando la pocision del dragon anterior
+  image (tituloEstacinario_2, 400, tituloPosY_2, 500, 150)
+
+// hace que suba (tituloEstacinario)
   if (frameCount < 190) {
     tituloPosY -= 2;
   }
@@ -33,7 +28,7 @@ function pantallacreditos() {
     textoInicioX = 400;
     textoInicioY = 320;
   }
-  
+
   // Lógica del contador de tiempo
   if (contadorActivo) {
     contador++;
@@ -79,6 +74,4 @@ function reproducirMusicaMenu() {
   if (CancionMenu && !CancionMenu.isPlaying()) {
     CancionMenu.loop();
   }
-
-
 }

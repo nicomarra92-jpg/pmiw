@@ -220,6 +220,13 @@ function pantalla10() {
   image(imagen11, 0, 0, 800, 350);
   text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
 }
+
+function pantalla11(){
+
+}
+
+
+
 //////////////////////////////////////////////////////////
 //pantallas finales alternativos/////////////////////////////
 /////////////////////////////////////////////////////////

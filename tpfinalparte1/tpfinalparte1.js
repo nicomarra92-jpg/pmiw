@@ -1,13 +1,18 @@
+// fondos del camino pricipal de juego
 let imagen1;
 let imagen2;
 let imagen3;
 let imagen4;
 let imagen5;
 let imagen7;
+
+//fondos de los caminos alternativos
 let imagen01;
 let imagen02;
 let imagen03;
 let imagen04;
+
+//imagenes de los botones
 let princesa;
 let tablilla;
 let puerta1;
@@ -15,10 +20,16 @@ let guardia1;
 let puente;
 let entrada;
 let mesa;
+
+//tipografia
 let miTipografia;
+
+//esto dicta que la pantalla incial sea la de creditos
+let pantalla = pantallacreditos;
+
+//posiciones de los boton
 let pospuertax = 338;
 let pospuertay = 227;
-let pantalla = pantallacreditos;
 let posguardiax = 372;
 let posguardiay = 141;
 let pospuentex = 592;
@@ -41,28 +52,19 @@ let posatkx = 90;
 let posatky = 80;
 
 
-
-
-
-
-
-
-
-let titulo = [];
-const aniTitulo = [2];
+//varibales del titulo
 let tituloEstacinario;
+let tituloEstacinario_2;
 
 let destello = [];
-
-
-
-let tituloPosY = 500;
-
-
 const aniDestello = 4;
 const veloDestello = 9;
 let posX = 900;
 let posY = 900;
+
+let tituloPosY = 500;
+
+let tituloPosY_2 = 900;
 
 let textoInicioX = 900;
 let textoInicioY = 900;
@@ -81,11 +83,8 @@ let contador = 0;
 
 
 
-
-
-
-
 function preload() {
+  // Fondos del camino principal del juego
   imagen1 = loadImage("data/imagen1.png");
   imagen2 = loadImage("data/imagen2.png");
   imagen3 = loadImage("data/imagen3.png");
@@ -97,12 +96,16 @@ function preload() {
   imagen9 = loadImage("data/imagen10.png");
   imagen10 = loadImage("data/imagen11.png");
   imagen11 = loadImage("data/imagen12.png");
+  imagen12 = loadImage("data/imagen13.jpg");
 
+  //Fondos de caminos alternativos
   imagen01 = loadImage("data/imagenalt1-1.jpg");
   imagen02 = loadImage("data/imagenalt2-1.png");
   imagen03 = loadImage("data/imagenalt2-2.png");
   imagen04 = loadImage("data/imagenalt2-3.jpg");
   imagen05 = loadImage("data/imagenalt3-1.jpg");
+
+  //Imagenes de botones
   defender = loadImage("data/defender.png");
   atacar = loadImage("data/atacar.png");
   mago1 = loadImage("data/mago1.png");
@@ -116,8 +119,6 @@ function preload() {
   puente= loadImage("data/puente.png");
   miTipografia = loadFont("data/VCR_OSD_MONO_1.001.ttf");
 
-
-
   CancionMenu = loadSound("Sonido/CancionTitulo.mp3");
 
   // 'i' es el valor que mientras aumenta, en el areglo de aniDestello va a circular las animaciones
@@ -127,13 +128,10 @@ function preload() {
     destello.push(loadImage('Sprites/Destello/destello_' + i + '.png'));
   }
 
-
+  //
   tituloEstacinario = loadImage('Sprites/Titulo/Titulo_0.png');
+  tituloEstacinario_2 = loadImage('Sprites/Titulo/Titulo_1.png')
 }
-
-
-
-
 
 
 function setup() {
@@ -148,11 +146,10 @@ function draw() {
   fill(255);
   noStroke();
 
-
+  //aqui se faman las funciones de Pantallas
   if (pantalla == pantallacreditos) {
     pantallacreditos();
   }
-
 
   if (pantalla == 0) {
     pantalla0();
@@ -227,16 +224,19 @@ function mousePressed() {
   if (getAudioContext().state !== 'running') {
     userStartAudio();
   }
+  
+  tituloPosY = 900;
+  tituloPosY_2 = 120;
+  
 
 
   if (pantalla == pantallacreditos) {
     if (contador >= 120) {
       if (mouseX > 200 && mouseX <  600 && mouseY > 100 && mouseY < 350) {
-
         pantalla = 0
       }
-    } else if   (!contadorActivo) {
-
+      
+    } else if (!contadorActivo) {
       reproducirMusicaMenu();
       contadorActivo = true;
       contador = 0;
@@ -247,7 +247,7 @@ function mousePressed() {
 
 
 
-
+  //botones de las pantallAS
   if (pantalla == 0 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
     pantalla = 1;
   } else if (pantalla == 1 && (mouseX > posguardiax && mouseX < posguardiax + 85 && mouseY > posguardiay && mouseY < posguardiay + 40)) {
@@ -268,6 +268,10 @@ function mousePressed() {
     pantalla = 9;
   } else if (pantalla == 9 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
     pantalla = 10;
+  } else if (pantalla == 10 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
+    pantalla = 11;
+
+
 
 
 
