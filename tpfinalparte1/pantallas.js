@@ -219,12 +219,56 @@ function pantalla10() {
   tint(255);
   image(imagen11, 0, 0, 800, 350);
   text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+
+
+    if (mouseX > posdragx && mouseX < posdragx + 120 && mouseY > posdragy && mouseY < posdragy + 280) {
+
+    tint(100)
+  } else {
+    tint(255)
+  }
+  text("ir a hablar con la princesa", mouseX, mouseY);
+  image(dragon, posdragx, posdragy, 220, 160);
 }
 
-function pantalla11(){
+function pantalla11() {
 
+  tint(255);
+  image(imagen12, 0, 0, 800, 350);
+  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+
+
+    push();
+  if (mouseX > posprincx && mouseX < posprincx +50 && mouseY > posprincy && mouseY < posprincy + 50) {
+
+    tint(100)
+  } else {
+    tint(255)
+  }
+
+  image(princesa2, posprincx, posprincy);
+  text("leer", mouseX, mouseY);
+
+  pop();
+
+
+  //boton entrada cueva
+  push();
+  if (mouseX > poscabx && mouseX < poscabx + 50 && mouseY > poscaby && mouseY < poscaby + 50) {
+
+    tint(100)
+  } else {
+    tint(255)
+  }
+  image(caballero, poscabx, poscaby)
+    pop()
 }
 
+function pantalla12(){
+tint(255)
+image(imagen13, 0, 0, 800, 350)
+text("no te casaste y decidiste encontrar mas aventuras para rescatar princesas",50, 380, 750, 70)
+}
 
 
 //////////////////////////////////////////////////////////
@@ -271,4 +315,9 @@ function pantalla231() {
 
 function pantalla311() {
   image(imagen05, 0, 0, 800, 350)
+}
+
+function pantalla411() {
+image(imagen06, 0 , 0 , 800, 350)
+text("armas una hermosa fiesta con todos tus invitados", 50, 380, 750, 70)
 }

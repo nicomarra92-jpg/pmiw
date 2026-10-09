@@ -50,7 +50,12 @@ let posdefx = 517;
 let posdefy = 240;
 let posatkx = 90;
 let posatky = 80;
-
+let posdragx = 292
+let posdragy = 30
+let posprincx = 445
+let posprincy = 184
+let poscabx = 318
+let poscaby = 233
 
 //varibales del titulo
 let tituloEstacinario;
@@ -97,6 +102,7 @@ function preload() {
   imagen10 = loadImage("data/imagen11.png");
   imagen11 = loadImage("data/imagen12.png");
   imagen12 = loadImage("data/imagen13.jpg");
+  imagen13 = loadImage("data/imagen14.png");
 
   //Fondos de caminos alternativos
   imagen01 = loadImage("data/imagenalt1-1.jpg");
@@ -104,8 +110,12 @@ function preload() {
   imagen03 = loadImage("data/imagenalt2-2.png");
   imagen04 = loadImage("data/imagenalt2-3.jpg");
   imagen05 = loadImage("data/imagenalt3-1.jpg");
+imagen06 = loadImage("data/imagenalt4-1.jpg");
 
   //Imagenes de botones
+ dragon = loadImage("data/dragon.png");
+ princesa2 = loadImage("data/princesas_2.png");
+ caballero = loadImage("data/caballero.png");
   defender = loadImage("data/defender.png");
   atacar = loadImage("data/atacar.png");
   mago1 = loadImage("data/mago1.png");
@@ -194,6 +204,13 @@ function draw() {
     pantalla10();
   }
 
+if (pantalla == 11) {
+    pantalla11();
+  }
+if (pantalla == 12) {
+    pantalla12();
+  }
+
 
   //finales alternativos
   if (pantalla == 111) {
@@ -213,6 +230,9 @@ function draw() {
     pantalla311();
   }
 
+ if (pantalla == 411) {
+    pantalla411();
+  }
 
   fill(255);
   textSize(30);
@@ -224,10 +244,11 @@ function mousePressed() {
   if (getAudioContext().state !== 'running') {
     userStartAudio();
   }
-  
+
   tituloPosY = 900;
   tituloPosY_2 = 120;
-  
+
+
 
 
   if (pantalla == pantallacreditos) {
@@ -235,7 +256,6 @@ function mousePressed() {
       if (mouseX > 200 && mouseX <  600 && mouseY > 100 && mouseY < 350) {
         pantalla = 0
       }
-      
     } else if (!contadorActivo) {
       reproducirMusicaMenu();
       contadorActivo = true;
@@ -243,12 +263,12 @@ function mousePressed() {
       textoInicioX = 900;
       textoInicioY = 900;
     }
-  }
 
 
 
-  //botones de las pantallAS
-  if (pantalla == 0 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
+
+    //botones de las pantallAS
+  } else if (pantalla == 0 && (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105)) {
     pantalla = 1;
   } else if (pantalla == 1 && (mouseX > posguardiax && mouseX < posguardiax + 85 && mouseY > posguardiay && mouseY < posguardiay + 40)) {
     pantalla = 2;
@@ -268,9 +288,11 @@ function mousePressed() {
     pantalla = 9;
   } else if (pantalla == 9 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
     pantalla = 10;
-  } else if (pantalla == 10 && (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280)) {
+  } else if (pantalla == 10 && (mouseX > posdragx && mouseX < posdragx + 120 && mouseY > posdragy && mouseY < posdragy + 280)) {
     pantalla = 11;
 
+} else if (pantalla == 11 && (mouseX > poscabx && mouseX < poscabx + 50 && mouseY > poscaby && mouseY < poscaby + 50)) {
+    pantalla = 12;
 
 
 
@@ -287,4 +309,8 @@ function mousePressed() {
   } else if (pantalla == 9 && (mouseX > posdefx && mouseX < posdefx + 180 && mouseY > posdefy && mouseY < posdefy + 150)) {
     pantalla = 311;
   }
+   else if (pantalla == 11 && (mouseX > posprincx && mouseX < posprincx +50 && mouseY > posprincy && mouseY < posprincy + 50)) {
+    pantalla = 411;
+  }
+  
 }
