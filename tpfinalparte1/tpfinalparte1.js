@@ -56,6 +56,8 @@ let posprincx = 445
 let posprincy = 184
 let poscabx = 318
 let poscaby = 233
+let poscab2x = 318
+let poscab2y = 233
 
 //varibales del titulo
 let tituloEstacinario;
@@ -127,6 +129,8 @@ imagen06 = loadImage("data/imagenalt4-1.jpg");
   puerta1 = loadImage("data/puerta1.png");
   guardia1 = loadImage("data/guardia1.png");
   puente= loadImage("data/puente.png");
+  caballero2 = loadImage("data/caballero2.png");
+  volverjugar = loadImage("data/VolverJugar.png");
   miTipografia = loadFont("data/VCR_OSD_MONO_1.001.ttf");
 
   CancionMenu = loadSound("Sonido/CancionTitulo.mp3");
@@ -234,9 +238,7 @@ if (pantalla == 12) {
     pantalla411();
   }
 
-  fill(255);
-  textSize(30);
-  text(mouseX + " - " + mouseY, mouseX, mouseY);
+ 
 }
 
 function mousePressed() {
@@ -293,7 +295,8 @@ function mousePressed() {
 
 } else if (pantalla == 11 && (mouseX > poscabx && mouseX < poscabx + 50 && mouseY > poscaby && mouseY < poscaby + 50)) {
     pantalla = 12;
-
+} else if (pantalla == 12 && (mouseX > poscab2x && mouseX < poscab2x + 80 && mouseY > poscab2y && mouseY < poscab2y + 50)) {
+    pantalla = 0;
 
 
 

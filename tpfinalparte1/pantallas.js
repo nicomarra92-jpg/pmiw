@@ -3,76 +3,33 @@
 
 
 function pantalla0() {
-  image(imagen1, 0, 0, 800, 350);
-  text("El protagonista extraño llega de casualidad a este castillo Tantegel, busca la manera de entrar al castillo", 50, 400, 750, 50);
-  tint(255);
+
+  cargarFondoPantalla(imagen1, "El protagonista extraño llega de casualidad a este castillo Tantegel, busca la manera de entrar al castillo")
 
 
-  //botonpantalla0
-  image(puerta1, pospuertax, pospuertay, 128, 73);
-  if (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105) {
-    text("entrar", mouseX, mouseY);
-
-    tint(100)
-  } else {
-    tint(255)
-  }
+    crearBotonImagen(puerta1, pospuertax, pospuertay, 128, 73, "entrar");
 }
 
 function pantalla1() {
-  tint(255);
+  cargarFondoPantalla(imagen2, "Se encuentra un guardia del castillo y le dice que el Señor Dragon ha secuestrado a la princesa y la tiene cautiva en una cueva lejana. Busca mas instrucciones o el camino hacia otra aventura" )
 
-  image(imagen2, 0, 0, 800, 350)
-    text("Se encuentra un guardia del castillo y le dice que el Señor Dragon ha secuestrado a la princesa y la tiene cautiva en una cueva lejana. Busca mas instrucciones o el camino hacia otra aventura", 50, 380, 750, 70);
-
-
-  //botones pantalla1
-  if (mouseX > posguardiax && mouseX < posguardiax + 85 && mouseY > posguardiay && mouseY < posguardiay + 40) {
-    text("hablar", mouseX, mouseY);
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(guardia1, posguardiax, posguardiay, 85, 40);
+    crearBotonImagen(guardia1, posguardiax, posguardiay, 85, 40, "hablar");
 
 
-  if (mouseX > pospuentex && mouseX < pospuentex + 50 && mouseY > pospuentey && mouseY < pospuentey + 25) {
-    text("cruzar", mouseX, mouseY);
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(puente, pospuentex, pospuentey, 50, 25)
+  crearBotonImagen(puente, pospuentex, pospuentey, 50, 25, "cruzar");
 }
+
+
 
 
 
 function pantalla2() {
-  tint(255);
-  image(imagen3, 0, 0, 800, 350);
-  text("Sigues las instrucciones del guardia y encuentras una tablilla escondida en una cueva, tienes la opcion de ver que dice o ignorarla y seguir el camino", 50, 380, 750, 70)
+  cargarFondoPantalla(imagen3, "Sigues las instrucciones del guardia y encuentras una tablilla escondida en una cueva, tienes la opcion de ver que dice o ignorarla y seguir el camino" )
 
-    //boton pantalla 2
-    push();
-  if (mouseX > postabx && mouseX < postabx + 180 && mouseY > postaby && mouseY < postaby + 100) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(tablilla, postabx, postaby, 180, 100);
-  text("leer", mouseX, mouseY);
-
-  pop();
+    crearBotonImagen(tablilla, postabx, postaby, 180, 100, "leer");
 
 
-  //boton entrada cueva
-  push();
+
   if (mouseX > posentrx && mouseX < posentrx + 50 && mouseY > posentry && mouseY < posentry + 50) {
 
     noStroke();
@@ -81,90 +38,46 @@ function pantalla2() {
   } else {
   }
 
-  image(entrada, posentrx, posentry, 60, 70);
-  text("seguir camino", mouseX, mouseY);
-
-  pop();
+  crearBotonImagen(entrada, posentrx, posentry, 60, 70, "seguir camino");
 }
-function pantalla3() {
-  tint(255);
-  image(imagen4, 0, 0, 800, 350);
-  text("Esta tablilla es de alguien llamado Erdrick que describe lo que debe hacer el heroe para derrotar al señor dragon, lee indicaciones de donde encontrar la espada y la armadura. equipado continua el camino para llegar a la princesa. Equipate y avanza", 50, 380, 750, 70)
 
-    if (mouseX > posmesax && mouseX < posmesax + 185 && mouseY > posmesay && mouseY < posmesay + 50) {
-    tint(100)
-  } else {
-    tint(255)
-  }
-  image(mesa, posmesax, posmesay, 185, 50)
+
+function pantalla3() {
+  cargarFondoPantalla(imagen4, "Esta tablilla es de alguien llamado Erdrick que describe lo que debe hacer el heroe para derrotar al señor dragon, lee indicaciones de donde encontrar la espada y la armadura. equipado continua el camino para llegar a la princesa. Equipate y avanza")
+
+    crearBotonImagen(mesa, posmesax, posmesay, 185, 50, "equiparse");
 }
 
 function pantalla4() {
-  tint(255);
-  image(imagen5, 0, 0, 800, 350);
-  text("Avanzas por la cueva y te encuentras con 3 enemigos bloqueando un camino pero logras vencerlos y encuentras a la princesa al final del camino", 50, 380, 750, 70)
+  cargarFondoPantalla(imagen5, "Avanzas por la cueva y te encuentras con 3 enemigos bloqueando un camino pero logras vencerlos y encuentras a la princesa al final del camino")
 
-    if (mouseX > posprinx && mouseX < posprinx + 50 && mouseY > pospriny && mouseY < pospriny + 50) {
-    tint(100)
-  } else {
-    tint(255)
-  }
-  image(princesa, posprinx, pospriny, 40, 40)
+    crearBotonImagen(princesa, posprinx, pospriny, 40, 40, "rescatar");
 }
 
 function pantalla5() {
-  tint(255);
-  image(imagen6, 0, 0, 800, 350);
-  text("Llevas la princesa al castillo de Tanteje y le pides recursos al Rey para poder derrotar al mago", 50, 380, 750, 70)
+  cargarFondoPantalla(imagen6, "Llevas la princesa al castillo de Tanteje y le pides recursos al Rey para poder derrotar al mago")
 
-    if (mouseX > posreyx && mouseX < posreyx + 50 && mouseY > posreyy && mouseY < posreyy + 50) {
-    tint(100)
-  } else {
-    tint(255)
-  }
-  image(rey, posreyx, posreyy, 50, 40)
+
+    crearBotonImagen(rey, posreyx, posreyy, 50, 40, "pedir recursos");
 }
 
 function pantalla6() {
 
-  tint(255);
-  image(imagen7, 0, 0, 800, 350);
-  text("Llegas a la entrada del castillo del Señor de los Dragones, busca la manera de entrar", 50, 380, 750, 70)
-
-    if (mouseX > pospuertax && mouseX < pospuertax + 210 && mouseY > pospuertay && mouseY < pospuertay + 105) {
-    text("entrar", mouseX, mouseY);
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(puerta1, pospuertax, pospuertay, 128, 73);
+  cargarFondoPantalla(imagen7, "Llegas a la entrada del castillo del Señor de los Dragones, busca la manera de entrar")
+    crearBotonImagen(puerta1, pospuertax, pospuertay, 128, 73, "entrar");
 }
 
 function pantalla7() {
 
+  cargarFondoPantalla(imagen8, "entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!")
 
-  tint(255);
-  image(imagen8, 0, 0, 800, 350);
-  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
-
-    if (mouseX > posmagox && mouseX < posmagox + 40 && mouseY > posmagoy && mouseY < posmagoy + 20) {
-    text("entrar", mouseX, mouseY);
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(mago1, posmagox, posmagoy);
+    crearBotonImagen(mago1, posmagox, posmagoy, 50, 30, "atacar");
 }
 
 function pantalla8() {
 
+  cargarFondoPantalla(imagen9, "Has matado al Señor Dragon! Dirigete hacia la proxima sala para terminar con todo este reino")
 
-  tint(255);
-  image(imagen9, 0, 0, 800, 350);
-  text("Has matado al Señor Dragon! Dirigete hacia la proxima sala para terminar con todo este reino", 50, 380, 750, 70)
 
     if (mouseX > 735 && mouseX < 780  && mouseY > 130 && mouseY < 200) {
 
@@ -176,98 +89,41 @@ function pantalla8() {
 }
 function pantalla9() {
 
+  
+  cargarFondoPantalla(imagen10, "pasas a la segunda fase del señor dragon. tienes que decidir si atacar o defender")
 
-  tint(255);
-  image(imagen10, 0, 0, 800, 350);
-  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+    crearBotonImagen(defender, posdefx, posdefy, 200, 115, "defender");
 
+  
+    crearBotonImagen(atacar, posatkx, posatky, 130, 270, "atacar");
 
-
-
-    push();
-  if (mouseX > posdefx && mouseX < posdefx + 180 && mouseY > posdefy && mouseY < posdefy + 150) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(defender, posdefx, posdefy);
-  text("leer", mouseX, mouseY);
-
-  pop();
-
-
-  //boton entrada cueva
-  push();
-  if (mouseX > posatkx && mouseX < posatkx + 120 && mouseY > posatky && mouseY < posatky + 280) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(atacar, posatkx, posatky);
-  text("seguir camino", mouseX, mouseY);
-
-  pop();
 }
-
 
 function pantalla10() {
 
-  tint(255);
-  image(imagen11, 0, 0, 800, 350);
-  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+ cargarFondoPantalla(imagen11, "aciertas un golpe critico contra el cuello del dragon y ganas la batalla")
 
+    crearBotonImagen(dragon, posdragx, posdragy, 220, 160,  "ir a buscar a ver a la princesa");
 
-    if (mouseX > posdragx && mouseX < posdragx + 120 && mouseY > posdragy && mouseY < posdragy + 280) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-  text("ir a hablar con la princesa", mouseX, mouseY);
-  image(dragon, posdragx, posdragy, 220, 160);
+  
 }
 
 function pantalla11() {
 
-  tint(255);
-  image(imagen12, 0, 0, 800, 350);
-  text("entraste al castillo y te pones cara a cara con El Señor de Los Dragones. Golpealo para abatirlo!", 50, 380, 750, 70)
+  cargarFondoPantalla(imagen12, "volves al castillo con la noticia de que mataste al dragon. La princesa te propone casarte con ella. y tiene que decidir entre eso o seguir con las aventuras que tanto te gustan")
 
+    crearBotonImagen(princesa2, posprincx, posprincy, 50, 50,  "casarse");
+    crearBotonImagen(caballero, poscabx, poscaby, 80, 45,  "aventurarse");
 
-    push();
-  if (mouseX > posprincx && mouseX < posprincx +50 && mouseY > posprincy && mouseY < posprincy + 50) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-
-  image(princesa2, posprincx, posprincy);
-  text("leer", mouseX, mouseY);
-
-  pop();
-
-
-  //boton entrada cueva
-  push();
-  if (mouseX > poscabx && mouseX < poscabx + 50 && mouseY > poscaby && mouseY < poscaby + 50) {
-
-    tint(100)
-  } else {
-    tint(255)
-  }
-  image(caballero, poscabx, poscaby)
-    pop()
+  
+  
 }
 
-function pantalla12(){
-tint(255)
-image(imagen13, 0, 0, 800, 350)
-text("no te casaste y decidiste encontrar mas aventuras para rescatar princesas",50, 380, 750, 70)
+function pantalla12() {
+  cargarFondoPantalla(imagen12, "no te casaste y decidiste encontrar mas aventuras para rescatar princesas")
+
+    crearBotonImagen(caballero2, poscab2x, poscab2y, 80, 50,  "hacia nuevas aventuras");
+ 
 }
 
 
@@ -280,6 +136,9 @@ function pantalla111() {
   tint(255)
     image(imagen01, 0, 0, 800, 350);
   text("Decides que no tienes ganas de salvar a nadie y sigues tu camino vagando por los bosques", 50, 380, 750, 70)
+  
+  
+
 }
 
 function pantalla211() {
@@ -318,6 +177,6 @@ function pantalla311() {
 }
 
 function pantalla411() {
-image(imagen06, 0 , 0 , 800, 350)
-text("armas una hermosa fiesta con todos tus invitados", 50, 380, 750, 70)
+  image(imagen06, 0, 0, 800, 350)
+    text("armas una hermosa fiesta con todos tus invitados", 50, 380, 750, 70)
 }
