@@ -1,3 +1,8 @@
+//https://youtu.be/tw0Pa6HhV3M
+
+
+
+
 // fondos del camino pricipal de juego
 let imagen1;
 let imagen2;
