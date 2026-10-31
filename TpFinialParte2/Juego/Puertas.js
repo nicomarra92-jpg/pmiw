@@ -6,15 +6,15 @@ class Puertas {
     this.ImgPuerta;
   }
   
-  dibujar{
+  dibujar(){
   
   }
   
-  colisionJugador{
+  colisionJugador(){
   
   }
   
-  cambioEstado{
+  cambioEstado(){
   
   }
   

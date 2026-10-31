@@ -1,17 +1,15 @@
 let objJuego;
 
 
-function setup(){
- objJuego = new Juego();
- fill(200);
- createCanvas (800, 450);
- 
+function setup() {
+  createCanvas (800, 450);
+  objJuego = new Juego();
 }
 
 
-function draw(){
- objJuego.dibujar();
- 
+function draw() {
+  background (200);
+  objJuego.dibujar();
 }
 
 
