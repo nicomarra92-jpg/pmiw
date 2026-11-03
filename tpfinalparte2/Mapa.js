@@ -5,8 +5,7 @@ class Mapa {
     this.tCelda = 50; // 50px * 16 col = 800 | 50px * 9 filas = 450
     this.grid = matrizEntrada;
 
-    // El .length nativo funciona al 100% sin dar undefined
-
+    
     this.filas = this.grid.length;       // Da 9
     this.columnas = this.grid[0].length; // Da 16
   }
@@ -25,7 +24,7 @@ class Mapa {
     }
   }
 
-  // Esta función queda lista para cuando configures tu personaje
+  
   esCaminoLibre(columna, fila) {
     if (fila < 0 || fila >= this.filas || columna < 0 || columna >= this.columnas) {
       return false; // Si se sale del mapa, es pared

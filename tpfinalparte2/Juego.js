@@ -5,24 +5,24 @@ class Juego {
     this.filas = 9;
     this.columnas = 16;
 
-    // 1. CREACIÓN BLINDADA: Creamos la grilla vacía (todo caminos libres '0') vía código
+    // crea grilla. las celdas 0 no estan pintadas
     this.grilla = [];
     for (let f = 0; f < this.filas; f++) {
       this.grilla[f] = new Array(this.columnas).fill(0);
     }
 
-    // 2. DISEÑO DEL LABERINTO: Convertimos en pared (1) las filas que queramos
-    // Hacemos que la fila 0 (techo) y la fila 8 (piso) sean todas paredes de un solo golpe
+    // las celdas que son pared se pintan y pintamos la fila 0 y la 8 que actue como marco
+
     this.grilla[0].fill(1);
     this.grilla[8].fill(1);
 
-    // Hacemos que la primera y última columna también sean paredes de arriba a abajo
+    // las paredes de los extremos derecho e izquierdo tambien forman parte del marco
     for (let f = 0; f < this.filas; f++) {
       this.grilla[f][0] = 1;
       this.grilla[f][15] = 1;
     }
 
-    // Paredes internas de tu laberinto (podés agregar o sacar las que quieras)
+    // Paredes internas del laberinto
     this.grilla[2][2] = 1;
     this.grilla[2][3] = 1;
     this.grilla[2][4] = 1;
@@ -75,7 +75,7 @@ class Juego {
   }
 
   dibujar() {
-    // DIBUJO DEL MAPA
+    // DIBUJa DEL MAPA
     for (let f = 0; f < this.filas; f++) {
       // Este "if" es el escudo definitivo: si algo falla externamente, saltea y no rompe el draw
       if (!this.grilla[f]) continue;
@@ -89,7 +89,7 @@ class Juego {
       }
     }
 
-    // TUS OBJETOS ORIGINALES (Se dibujan arriba)
+    
     this.personaje.dibujar();
     this.personaje.controlarInvul();
 
