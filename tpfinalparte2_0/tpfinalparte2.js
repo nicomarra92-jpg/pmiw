@@ -1,21 +1,14 @@
 
+let juego;
 
 function setup() {
-  createCanvas (800, 450);
+  createCanvas(800, 450);
+
+  juego = new Juego();
 }
 
-
 function draw() {
-  background (200);
-  let tamañoCelda = 25;
+  background(200);
 
-  for (let x = 0; x < width; x += tamañoCelda) {
-    for (let y = 0; y < height; y += tamañoCelda) {
-
-      stroke(0);
-      noFill();
-
-      rect(x, y, tamañoCelda, tamañoCelda);
-    }
-  }
+  juego.dibujar();
 }
