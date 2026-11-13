@@ -1,39 +1,49 @@
-
 class Personaje {
   constructor() {
-    this.x = 12;
-    this.y = 12;
-    this.tamaño = 20;
-    this.velocidad = 3;
+    this.x = 1;
+    this.y = 1;
+    this.tamaño = 25;
+
+    this.velocidad = 150;
+    this.tiempoAnterior = 0;
   }
 
-  mover() {
-    if (keyIsDown(LEFT_ARROW)) {
-      this.x -= this.velocidad;
-    }
+  mover(laberinto) {
+    if (millis() - this.tiempoAnterior > this.velocidad) {
 
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.x += this.velocidad;
-    }
+      let nuevaX = this.x;
+      let nuevaY = this.y;
 
-    if (keyIsDown(UP_ARROW)) {
-      this.y -= this.velocidad;
-    }
+      if (keyIsDown(LEFT_ARROW)) {
+        nuevaX--;
+      }
+      else if (keyIsDown(RIGHT_ARROW)) {
+        nuevaX++;
+      }
+      else if (keyIsDown(UP_ARROW)) {
+        nuevaY--;
+      }
+      else if (keyIsDown(DOWN_ARROW)) {
+        nuevaY++;
+      }
 
-    if (keyIsDown(DOWN_ARROW)) {
-      this.y += this.velocidad;
-    }
+      if (!laberinto.esPared(nuevaX, nuevaY)) {
+        this.x = nuevaX;
+        this.y = nuevaY;
+      }
 
-    this.x = constrain(this.x, 0, width - this.tamaño);
-    this.y = constrain(this.y, 0, height - this.tamaño);
+      this.tiempoAnterior = millis();
+    }
   }
 
   dibujar() {
-    fill(255, 0, 0);
+    fill(0, 0, 255);
     noStroke();
-    circle(
-      this.x + this.tamaño / 2,
-      this.y + this.tamaño / 2,
+
+    rect(
+      this.x * this.tamaño,
+      this.y * this.tamaño,
+      this.tamaño,
       this.tamaño
     );
   }

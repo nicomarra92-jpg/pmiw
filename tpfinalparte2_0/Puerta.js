@@ -1,0 +1,6 @@
+class Puertas {
+  constructor() {
+     }
+     
+     
+}

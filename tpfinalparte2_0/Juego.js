@@ -1,4 +1,3 @@
-
 class Juego {
   constructor() {
     this.laberinto = new Laberinto();
@@ -8,7 +7,7 @@ class Juego {
   dibujar() {
     this.laberinto.dibujar();
 
-    this.personaje.mover();
+    this.personaje.mover(this.laberinto);
     this.personaje.dibujar();
   }
 }
