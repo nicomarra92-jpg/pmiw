@@ -1,3 +1,5 @@
+// https://youtu.be/z31C3MrliP0
+
 let juego;
 
 // Imágenes y sonidos globales
@@ -11,7 +13,7 @@ let veloDestello = 5;
 let CancionMenu;
 
 function preload() {
-  // Reemplazá los nombres de archivo por los que subiste a tu proyecto
+  
   imgPuerta = loadImage('data/puerta.png');
   imgGanar = loadImage('data/ganar.png');
   imgPerder = loadImage('data/perder.png');
@@ -22,8 +24,6 @@ function preload() {
   tituloEstacinario = loadImage('data/titulo1.png');
 
   
-  // Si tenés los frames del destello y la canción, cargalos acá:
-  // destello[0] = loadImage('destello0.png');
    CancionMenu = loadSound('Sonido/CancionTitulo.mp3');
    musicaLaberinto = loadSound('Sonido/14_Battle_Theme.mp3');
    musicaGanadora = loadSound('Sonido/17_Battle_Victory.mp3');
