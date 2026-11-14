@@ -1,19 +1,24 @@
 class Juego {
   constructor() {
-    // Arrancamos siempre en la pantalla de inicio
+    // Arrancamos siempre en la pantalla de inicio.
     this.estadoActual = new EstadoInicio(this);
   }
 
   cambiarEstado(nuevoEstado) {
+
+    // Detiene la música del estado anterior.
+    if (this.estadoActual && this.estadoActual.detenerMusica) {
+      this.estadoActual.detenerMusica();
+    }
+
+    // Actualiza el estado actual.
     this.estadoActual = nuevoEstado;
   }
 
   iniciarPartida() {
     this.laberinto = new Laberinto();
-
     this.personaje = new Personaje();
 
-    // verificamos que todas las trampas se estén creando y que se puedan interactuar
     this.trampas = [];
     this.trampas[0] = new Trampa(3, 4, 25);
     this.trampas[1] = new Trampa(8, 5, 25);

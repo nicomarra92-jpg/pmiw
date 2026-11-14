@@ -34,18 +34,18 @@ class Laberinto {
       }
     }
   }
+  
+    // CREA UNA PUERTA.
+  crearPuerta(fila, columna, correcta) {
+
+    // Busca la celda correspondiente y crea una puerta.
+    this.celdas[fila][columna].convertirAPuerta(correcta);
+  }
 
   crearTrampa(fila, columna) {
 
     // Busca la celda correspondiente y la convierte en trampa.
     this.celdas[fila][columna].convertirATrampa();
-  }
-
-  // CREA UNA PUERTA.
-  crearPuerta(fila, columna, correcta) {
-
-    // Busca la celda correspondiente y crea una puerta.
-    this.celdas[fila][columna].convertirAPuerta(correcta);
   }
 
   // ACTUALIZA LAS PUERTAS.

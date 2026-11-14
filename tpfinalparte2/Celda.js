@@ -1,6 +1,6 @@
 class Celda {
   constructor(fila, columna, tamaño) {
-    
+
     //en estas operaciones booleanas podemos definir que es la celda
     this.pared = false;
     this.trampa = false;
@@ -13,37 +13,37 @@ class Celda {
 
   dibujar() {
 
+    // Comprueba si la celda es una pared.
     if (this.esTipoPared()) {
-      fill(135, 101, 22);
+
+      image(imgPared,
+        this.fila * this.tamañoCelda,
+        this.columna * this.tamañoCelda,
+        this.tamañoCelda,
+        this.tamañoCelda
+        );
     } else {
+
       fill(224, 211, 146);
+
+      rect(
+        this.fila * this.tamañoCelda,
+        this.columna * this.tamañoCelda,
+        this.tamañoCelda,
+        this.tamañoCelda
+        );
     }
 
-// Dibuja un rectángulo que representa la celda del laberinto.
-// La posición se calcula multiplicando la fila y la columna
-// por el tamaño de cada celda.
-rect(
-  this.fila * this.tamañoCelda,
-  this.columna * this.tamañoCelda,
-  this.tamañoCelda,
-  this.tamañoCelda
-);
+    // Comprueba si la celda actual es una trampa.
+    if (this.esTrampa()) {
 
-// Comprueba si la celda actual está marcada como una trampa.
-if (this.esTrampa()) {
-
-  // Establece el color rojo para identificar visualmente la trampa.
-  fill(255, 0, 0);
-
-  // Dibuja nuevamente un rectángulo en la misma posición,
-  // pero esta vez con el color rojo para representar la trampa.
-  rect(
-    this.fila * this.tamañoCelda,
-    this.columna * this.tamañoCelda,
-    this.tamañoCelda,
-    this.tamañoCelda
-  );
-}
+      rect(
+        this.fila * this.tamañoCelda,
+        this.columna * this.tamañoCelda,
+        this.tamañoCelda,
+        this.tamañoCelda
+        );
+    }
 
     // Dibuja la puerta si existe.
     if (this.esPuerta()) {
@@ -52,7 +52,7 @@ if (this.esTrampa()) {
   }
 
 
-//aca definimos en acciones que puede ser una celda
+  //aca definimos en acciones que puede ser una celda
   esTipoPared() {
     return this.pared == true;
   }
@@ -79,6 +79,6 @@ if (this.esTrampa()) {
       this.columna,
       this.tamañoCelda,
       correcta
-    );
+      );
   }
 }

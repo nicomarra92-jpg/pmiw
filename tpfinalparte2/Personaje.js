@@ -10,7 +10,7 @@ class Personaje {
 
     // Sistema de vidas
     this.vida = 3;
-    this.miColor = color(252, 69, 8);
+    //this.miColor = color(252, 69, 8);
 
     // Sistema de invulnerabilidad
     this.invulnerabilidad = false;
@@ -46,35 +46,39 @@ class Personaje {
   }
 
   dibujar() {
+
     this.controlarInvulnerabilidad();
     this.estadoVida();
-
-    fill(this.miColor);
     noStroke();
 
-    rect(
+    tint(this.oscuridad);
+
+    image(imgJugador,
       this.x * this.tamaño,
       this.y * this.tamaño,
       this.tamaño,
       this.tamaño
       );
+
+    noTint();
   }
 
-  // CAMBIO DE COLOR SEGUN LAS VIDAS
-  estadoVida() {
+// CAMBIO DE OSCURIDAD SEGUN LAS VIDAS
+estadoVida() {
 
-    if (this.vida === 3) {
-      this.miColor = color(252, 69, 8);
-    } else if (this.vida === 2) {
-      this.miColor = color(150, 53, 21);
-    } else if (this.vida === 1) {
+  if (this.vida === 3) {
+    this.oscuridad = 255;
 
-      this.miColor = color(110, 43, 21);
-    } else if (this.vida <= 0) {
+  } else if (this.vida === 2) {
+    this.oscuridad = 170;
 
-      this.Muerto();
-    }
+  } else if (this.vida === 1) {
+    this.oscuridad = 85;
+
+  } else if (this.vida <= 0) {
+    this.Muerto();
   }
+}
 
   // CONTROL DE INVULNERABILIDAD
   controlarInvulnerabilidad() {

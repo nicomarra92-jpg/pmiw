@@ -4,15 +4,12 @@ class Trampa {
     this.posX = fila * tamaño;
     this.posY = columna * tamaño;
 
-    this.miColor = color(255, 0, 0);
     this.tamaño = tamaño;
   }
 
   dibujar() {
-    fill(this.miColor);
-    noStroke();
 
-    rect(
+    image(imgSlime,
       this.posX,
       this.posY,
       this.tamaño,
