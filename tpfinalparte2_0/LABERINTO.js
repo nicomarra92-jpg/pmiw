@@ -1,8 +1,7 @@
 
+
 class Laberinto {
   constructor() {
-
-    // Define el tamaño en píxeles de cada casilla.
     this.tamañoCelda = 25;
 
     // Calcula cuántas columnas entran en el ancho del canvas.
@@ -23,6 +22,8 @@ class Laberinto {
 
     // Finalmente se construyen las paredes negras.
     this.crearLaberinto();
+
+    this.trampas = [];
   }
 
   // Recorre todas las casillas y las dibuja en pantalla.
@@ -32,6 +33,44 @@ class Laberinto {
 
         // Accede a una casilla específica usando su columna y fila.
         this.celdas[x][y].dibujar();
+      }
+    }
+  }
+
+  crearTrampa(fila, columna) {
+
+    // Busca la celda correspondiente y la convierte en trampa.
+    this.celdas[fila][columna].convertirATrampa();
+  }
+
+  // CREA UNA PUERTA.
+
+  // Recibe la fila, columna y el tipo de puerta.
+  // correcta = true: puerta correcta.
+  // correcta = false: puerta incorrecta.
+
+  crearPuerta(fila, columna, correcta) {
+
+    // Busca la celda correspondiente y crea una puerta.
+    this.celdas[fila][columna].convertirAPuerta(correcta);
+  }
+
+  // ACTUALIZA LAS PUERTAS.
+
+  // Recorre todas las celdas del laberinto.
+  // Si encuentra una puerta, comprueba la colisión
+  // con el personaje.
+
+  actualizarPuertas(personaje) {
+
+    for (let x = 0; x < this.columnas; x++) {
+      for (let y = 0; y < this.filas; y++) {
+
+        let celda = this.celdas[x][y];
+
+        if (celda.esPuerta()) {
+          celda.puerta.colisionJugador(personaje);
+        }
       }
     }
   }
@@ -55,7 +94,6 @@ class Laberinto {
       for (let y = 0; y < this.filas; y++) {
 
         // Crea una nueva casilla.
-        // Se envían su posición X, posición Y y tamaño.
         let celda = new Celda(
           x,
           y,
@@ -69,17 +107,11 @@ class Laberinto {
   }
 
   // CREA UNA PARED HORIZONTAL.
-  //
+
   // Recibe tres parámetros:
   // fila: indica en qué fila se construirá la pared.
   // inicio: indica en qué columna comienza.
   // fin: indica en qué columna termina.
-  //
-  // Ejemplo:
-  // crearParedHorizontal(2, 2, 8);
-  //
-  // Construye una pared en la fila 2, ocupando las columnas
-  // desde la 2 hasta la 8.
 
   crearParedHorizontal(fila, inicio, fin) {
 
@@ -92,17 +124,11 @@ class Laberinto {
   }
 
   // CREA UNA PARED VERTICAL.
-  //
+
   // Recibe tres parámetros:
   // columna: indica en qué columna se construirá la pared.
   // inicio: indica en qué fila comienza.
   // fin: indica en qué fila termina.
-  //
-  // Ejemplo:
-  // crearParedVertical(4, 3, 6);
-  //
-  // Construye una pared en la columna 4, ocupando las filas
-  // desde la 3 hasta la 6.
 
   crearParedVertical(columna, inicio, fin) {
 
@@ -118,9 +144,8 @@ class Laberinto {
   esPared(x, y) {
 
     // Comprueba si la posición está fuera de los límites del laberinto.
-    // Si está fuera, devuelve true (se considera una pared).
     if (x < 0 || x >= this.columnas ||
-        y < 0 || y >= this.filas) {
+      y < 0 || y >= this.filas) {
       return true;
     }
 
@@ -130,48 +155,28 @@ class Laberinto {
 
   // CONSTRUCCIÓN DEL LABERINTO.
   //
-  // Aquí se determina la ubicación de todas las paredes.
-  // Se utilizan los métodos anteriores para construirlas
-  // indicando sus coordenadas.
+  // Aquí se determina la ubicación de todas las paredes,
+  // trampas y puertas.
 
   crearLaberinto() {
 
     // BORDE SUPERIOR E INFERIOR
-    // Construye dos paredes horizontales.
-    // La primera ocupa toda la fila 0.
-    // La segunda ocupa toda la última fila.
 
     this.crearParedHorizontal(0, 0, this.columnas - 1);
     this.crearParedHorizontal(this.filas - 1, 0, this.columnas - 1);
 
     // BORDE IZQUIERDO Y DERECHO
-    // Construye dos paredes verticales.
-    // La primera ocupa toda la columna 0.
-    // La segunda ocupa toda la última columna.
 
     this.crearParedVertical(0, 0, this.filas - 1);
     this.crearParedVertical(this.columnas - 1, 0, this.filas - 1);
 
-
     // ZONA SUPERIOR
-    // Se crean diferentes paredes dentro de la parte superior.
-    // Cada número representa una fila o columna de casillas.
 
-    // Pared horizontal en la fila 2, desde la columna 2 hasta la 8.
     this.crearParedHorizontal(2, 2, 8);
-
-    // Otra pared horizontal en la misma fila, desde la columna 12 hasta la 18.
     this.crearParedHorizontal(2, 12, 18);
-
-    // Pared vertical en la columna 4, desde la fila 3 hasta la 6.
     this.crearParedVertical(4, 3, 6);
-
-    // Pared vertical en la columna 10, desde la fila 1 hasta la 4.
     this.crearParedVertical(10, 1, 4);
-
-    // Pared vertical en la columna 16, desde la fila 3 hasta la 6.
     this.crearParedVertical(16, 3, 6);
-
 
     // ZONA CENTRAL
 
@@ -184,7 +189,6 @@ class Laberinto {
     this.crearParedVertical(14, 6, 9);
     this.crearParedVertical(23, 3, 8);
 
-
     // ZONA INFERIOR
 
     this.crearParedHorizontal(13, 2, 9);
@@ -195,5 +199,21 @@ class Laberinto {
     this.crearParedVertical(12, 11, 14);
     this.crearParedVertical(20, 12, 16);
     this.crearParedVertical(27, 10, 15);
+
+    // CREA TRAMPAS
+
+    this.crearTrampa(3, 4);
+    this.crearTrampa(8, 5);
+    this.crearTrampa(12, 7);
+    this.crearTrampa(18, 11);
+    this.crearTrampa(24, 14);
+
+    // CREA PUERTAS
+
+    // Puerta superior: incorrecta.
+    this.crearPuerta(29, 2, false);
+
+    // Puerta inferior: correcta.
+    this.crearPuerta(29, 13, true);
   }
 }
