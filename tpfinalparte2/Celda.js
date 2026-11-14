@@ -45,7 +45,7 @@ class Celda {
         );
     }
 
-    // Dibuja la puerta si existe.
+    // Dibuja la puerta 
     if (this.esPuerta()) {
       this.puerta.dibujar();
     }

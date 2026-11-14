@@ -6,7 +6,7 @@ class EstadoInicio {
     this.juego = juego;
 
     this.tiempo = 0;
-    this.tituloPosY = 550;   // Ajustá la Y inicial si arrancaba en otra altura
+    this.tituloPosY = 550;   // Ajustá la y 
 
     this.posX = -500;
     this.posY = -500;
@@ -48,7 +48,7 @@ class EstadoInicio {
       this.textoInicioY = 320;
     }
 
-    // Lógica del contador de tiempo
+    // contador de tiempo
     if (this.contadorActivo) {
       this.contador++;
     }
@@ -61,12 +61,12 @@ class EstadoInicio {
       this.creditoTextY = 270;
     }
 
-    // Configuración de textos
+  
     textAlign(CENTER, CENTER);
     textSize(26);
     fill(255, 162, 69);
 
-    // Textos en pantalla
+    
     text("Haga click para activar audio", this.textoInicioX, this.textoInicioY);
     text("Start", this.botonTextoX, this.botonTextoY);
     text("Desarrolladores: Nicolas Marra, Valentin Cavaller. Autor: Yuji Horii", this.creditoTextX, this.creditoTextY, 600, 200);
@@ -76,7 +76,7 @@ class EstadoInicio {
   }
 
   manejarClick() {
-    // Clic en "Haga click para activar audio"
+    
     if (
       !this.contadorActivo &&
       dist(mouseX, mouseY, this.textoInicioX, this.textoInicioY) < 150
@@ -86,7 +86,7 @@ class EstadoInicio {
       this.textoInicioX = -500;
     }
 
-    // Clic en "Start"
+   
     if (
       this.contador >= 120 &&
       dist(mouseX, mouseY, this.botonTextoX, this.botonTextoY) < 60
@@ -94,15 +94,64 @@ class EstadoInicio {
       if (CancionMenu && CancionMenu.isPlaying()) {
         CancionMenu.stop();
       }
-      this.juego.iniciarPartida();
-      this.juego.cambiarEstado(new EstadoJugando(this.juego));
+      //  pantalla de instrucciones 
+      this.juego.cambiarEstado(new EstadoInstrucciones(this.juego));
     }
   }
 
   manejarTeclas() {
   }
 }
+// ==========================================
+// 1.5 PANTALLA DE INSTRUCCIONES
+// ==========================================
+class EstadoInstrucciones {
+  constructor(juego) {
+    this.juego = juego;
+  }
 
+  dibujar() {
+    push();
+    background(20, 30, 45);
+
+    // Título
+    textAlign(CENTER, CENTER);
+    textSize(32);
+    fill(255, 162, 69);
+    text("INSTRUCCIONES", width / 2, 120);
+
+    // Cuerpo de las instrucciones
+    textSize(18);
+    fill(240);
+    textAlign(LEFT, TOP);
+
+    text(
+      "• Tu objetivo es atravesar el laberinto con vida y encontrar\n" +
+      "la puerta correcta que te permitirá escapar.\n" +
+      "• En el laberinto hay 2 puertas: una lleva a la salida y la otra es una trampa.\n" +
+      "• Utiliza las flechas del teclado para moverte. ¡Buena suerte!",
+      width / 2 - 250, 210, 500, 200
+      );
+    // Botón o aviso para continuar
+    textSize(20);
+    fill(255, 162, 69);
+     textAlign(CENTER, CENTER)
+    text("Hacé clic o presioná ENTER para comenzar a jugar", width / 2, 370);
+    pop();
+  }
+
+  manejarClick() {
+    this.juego.iniciarPartida();
+    this.juego.cambiarEstado(new EstadoJugando(this.juego));
+  }
+
+  manejarTeclas() {
+    if (keyCode === ENTER) {
+      this.juego.iniciarPartida();
+      this.juego.cambiarEstado(new EstadoJugando(this.juego));
+    }
+  }
+}
 // ==========================================
 // 2. PANTALLA DE JUEGO
 // ==========================================
@@ -114,35 +163,34 @@ class EstadoJugando {
     if (!musicaLaberinto.isPlaying()) {
       musicaLaberinto.loop();
     }
-    
   }
-  
-      dibujar() {
-      this.juego.personaje.mover(this.juego.laberinto);
-      this.juego.personaje.controlarInvulnerabilidad();
 
-      let resultadoPuerta = this.juego.laberinto.actualizarPuertas(this.juego.personaje);
+  dibujar() {
+    this.juego.personaje.mover(this.juego.laberinto);
+    this.juego.personaje.controlarInvulnerabilidad();
 
-      this.juego.laberinto.dibujar();
+    let resultadoPuerta = this.juego.laberinto.actualizarPuertas(this.juego.personaje);
 
-      for (let i = 0; i < this.juego.trampas.length; i++) {
-        this.juego.trampas[i].dibujar();
-        this.juego.trampas[i].colisionar(this.juego.personaje);
-      }
+    this.juego.laberinto.dibujar();
 
-      this.juego.personaje.dibujar();
-
-      if (this.juego.personaje.vida <= 0) {
-        this.juego.cambiarEstado(new EstadoPerder(this.juego));
-        return;
-      }
-
-      if (resultadoPuerta === "GANAR") {
-        this.juego.cambiarEstado(new EstadoGanar(this.juego));
-      } else if (resultadoPuerta === "PERDER") {
-        this.juego.cambiarEstado(new EstadoPerder(this.juego));
-      }
+    for (let i = 0; i < this.juego.trampas.length; i++) {
+      this.juego.trampas[i].dibujar();
+      this.juego.trampas[i].colisionar(this.juego.personaje);
     }
+
+    this.juego.personaje.dibujar();
+
+    if (this.juego.personaje.vida <= 0) {
+      this.juego.cambiarEstado(new EstadoPerder(this.juego));
+      return;
+    }
+
+    if (resultadoPuerta === "GANAR") {
+      this.juego.cambiarEstado(new EstadoGanar(this.juego));
+    } else if (resultadoPuerta === "PERDER") {
+      this.juego.cambiarEstado(new EstadoPerder(this.juego));
+    }
+  }
 
   detenerMusica() {
     musicaLaberinto.stop();
@@ -161,7 +209,7 @@ class EstadoGanar {
   constructor(juego) {
     this.juego = juego;
 
-    // Reproduce la música de victoria una sola vez.
+    // música de victoria 
     musicaGanadora.play();
   }
 
@@ -204,7 +252,7 @@ class EstadoPerder {
   constructor(juego) {
     this.juego = juego;
 
-    // Reproduce la música de derrota una sola vez.
+    //  música de derrota 
     musicaPerdedora.play();
   }
 
@@ -241,7 +289,7 @@ class EstadoPerder {
 }
 
 // ==========================================
-// FUNCIONES AUXILIARES
+// OTRAS FUNCIONES
 // ==========================================
 function elegirFrame(frames, veloDestello) {
   if (!frames || frames.length === 0) return null;

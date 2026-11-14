@@ -1,17 +1,17 @@
 class Juego {
   constructor() {
-    // Arrancamos siempre en la pantalla de inicio.
+    //  pantalla de inicio.
     this.estadoActual = new EstadoInicio(this);
   }
 
   cambiarEstado(nuevoEstado) {
 
-    // Detiene la música del estado anterior.
+    // Detiene la música 
     if (this.estadoActual && this.estadoActual.detenerMusica) {
       this.estadoActual.detenerMusica();
     }
 
-    // Actualiza el estado actual.
+    // Actualiza el estado
     this.estadoActual = nuevoEstado;
   }
 

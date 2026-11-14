@@ -3,7 +3,6 @@ class Puerta {
   // Recibe la posición, el tamaño y si la puerta es correcta.
   constructor(fila, columna, tamaño, correcta) {
 
-    // Convierte la posición de la celda a píxeles.
     this.posX = fila * tamaño;
     this.posY = columna * tamaño;
 
@@ -27,11 +26,10 @@ class Puerta {
     }
   }
 
-  // DETECTA LA COLISIÓN CON EL PERSONAJE.
+  // COLISIÓN CON EL PERSONAJE.
   colisionJugador(personaje) {
 
-    // Comprueba si los límites del personaje
-    // se superponen con los límites de la puerta.
+    // límites del personaje
     if (
       personaje.x * personaje.tamaño < this.posX + this.tamaño &&
       personaje.x * personaje.tamaño + personaje.tamaño > this.posX &&
@@ -39,12 +37,10 @@ class Puerta {
       personaje.y * personaje.tamaño + personaje.tamaño > this.posY
     ) {
 
-      // Si toca una puerta correcta, cambia a verde y devuelve GANAR.
       if (this.correcta) {
         this.miColor = color(0, 255, 0);
         return "GANAR";
 
-      // Si toca una puerta incorrecta, cambia a rojo y devuelve PERDER.
       } else {
         this.miColor = color(255, 0, 0);
         return "PERDER";
@@ -52,7 +48,6 @@ class Puerta {
 
     } else {
 
-      // Si el personaje se aleja, recupera el color inicial.
       this.miColor = color(200, 10, 100);
       return null;
     }
